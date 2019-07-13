@@ -6,10 +6,10 @@ import time
 
 def upto_time():
     time_now = time.strftime('%H:%M:%S', time.localtime(time.time()))
-    if( time_now < "09:49:30" ):
+    if( time_now < "09:59:30" ):
         time.sleep(5)
         print('--- long ---', time_now)
-    elif(time_now < "09:49:45" ):
+    elif(time_now < "09:59:45" ):
         time.sleep(1.5)
         print('--- medium ---', time_now)
     else:
@@ -66,13 +66,14 @@ while( refresh ):
 # 安选
 #css = '#app-wrap > div.invest-wrap > div.m-content-top > div:nth-child(2) > div.money > input[type=text]'
 # 优选
-css = '#app-wrap > div.invest-wrap > div.m-content-top > div:nth-child(3) > div.money > input[type=text]'
+#css = '#app-wrap > div.invest-wrap > div.m-content-top > div:nth-child(3) > div.money > input[type=text]'
+css = '#app-wrap > div.invest-wrap > div.m-content-top > div:nth-child(2) > div.money > input[type=text]'
 element = driver.find_element_by_css_selector(css)
 element.click()
 element.clear()
 element.send_keys("8866.42")
 # 确认金额
-css = '#app-wrap > div.invest-wrap > div.m-content-top > div:nth-child(3) > button'
+css = '#app-wrap > div.invest-wrap > div.m-content-top > div:nth-child(2) > button'
 element = driver.find_element_by_css_selector(css)
 element.click()
 time.sleep(1)
