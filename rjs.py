@@ -6,10 +6,16 @@ import time
 
 def upto_time():
     time_now = time.strftime('%H:%M:%S', time.localtime(time.time()))
-    if( time_now < "09:59:30" ):
+    if( time_now < "09:58:00" ):
+        time.sleep(30)
+        print('--- nap ---', time_now)
+    elif(time_now < "09:59:00" ):
+        time.sleep(15)
+        print('--- wait ---', time_now)
+    elif(time_now < "09:59:30" ):
         time.sleep(5)
         print('--- long ---', time_now)
-    elif(time_now < "09:59:45" ):
+    elif(time_now < "09:59:50" ):
         time.sleep(1.5)
         print('--- medium ---', time_now)
     else:
@@ -21,7 +27,6 @@ driver = Chrome("C:\Program Files (x86)\Google\Chrome\Application\chromedriver.e
 
 #driver.get("http://www.baidu.com/")
 driver.get("https://www.rjs.com/member/user.html#login")
-assert u"融金所" in driver.title
 element = driver.find_element_by_id("login_username")
 element.clear()
 element.send_keys("Groningen")
@@ -52,7 +57,7 @@ while( refresh ):
         driver.refresh() # refresh
         css = "#investWrap > div:nth-child(9) > div > ul > li:nth-child(1) > table > tbody > td.td5 > button"
         element = driver.find_element_by_css_selector(css)
-        print('优选[',element.text,']')
+#        print('优选[',element.text,']')
         if( element.text == '立即加入' ):
             refresh = False
             # 点击加入
